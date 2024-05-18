@@ -6,9 +6,10 @@ const auth = require("../middlewares/auth");
 router.post("/register", teacherController.registerTeacher);
 router.post("/login", teacherController.loginTeacher);
 router.post("/logout", authenticateUser, teacherController.logoutTeacher);
-// router.get("/", teacherController.getTeachers);
-// router.get("/:email", authenticateUser, teacherController.getTeacher);
-// router.put("/", authenticateUser, authorizeUser('teacher'),teacherController.updateTeacher);
-// router.delete("/",authenticateUser, authorizeUser("admin"), teacherController.deleteTeacher);
+router.post("/register-course",auth.authenticateUser,auth.authorizeUser('student'),studentController.registerCourse);
+router.get("/all", teacherController.getTeachers);//ONLY an admin should do this
+router.get("/:email", authenticateUser, teacherController.getTeacher); //only an admin
+router.put("/update", authenticateUser, authorizeUser("teacher"),teacherController.updateTeacher);
+router.delete("/delete",authenticateUser, authorizeUser("admin"), teacherController.deleteTeacher);
 
 module.exports = router;

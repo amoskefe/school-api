@@ -16,7 +16,7 @@ async function login(req, res) {
     }
     const token = jwt.generateToken({email:admin.email,role:"admin"});
     res.header("Authorization",`Bearer ${token}`);
-    res.status(200).json({message:"Login Successfull"});
+    res.status(200).json({message:"Login Successful"});
   }
   catch(error){
     res.status(500).json({message:"Internal Server Error",error:error.message});
@@ -28,7 +28,7 @@ async function login(req, res) {
 function logOut(req, res) {
   try{
     res.setHeader("Authorization","");
-    res.status(200).json({message:"Logout Successfull"});
+    res.status(200).json({message:"Logout Successful"});
   }
   catch(error){
     res.status(500).json({message:"Internal Server Error"});

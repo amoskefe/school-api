@@ -11,6 +11,21 @@ const registerTeacher = (req, res) => {
   }
 };
 
+function handleCourse(req,res){
+    try{
+        const {course_code} = req.body;
+        const email = req.user.email
+        const result = teacherModel.handleCourse(course_code,email);
+        if(!result){
+            return res.status(400).json({message:"Invalid Course Code"});
+        }
+        res.status(200).json({message:"Course Registered Successfully"});
+    }
+    catch(error){
+        res.status(500).json({message:"Internal Server Error"});
+    }
+}
+
 const loginTeacher = (req, res) => {
     try{
         const {email, password} = req.body;
@@ -24,7 +39,7 @@ const loginTeacher = (req, res) => {
         }
         const token = jwt.generateToken({email:teacher.email,role:"teacher"});
         res.header("x-auth",token);
-        res.status(200).json({message:"Login Successfull"});
+        res.status(200).json({message:"Login Successful"});
       }
       catch(error){
         res.status(500).json({message:"Internal Server Error",error:error.message});
@@ -34,7 +49,7 @@ const loginTeacher = (req, res) => {
 const logoutTeacher = (req, res) => {
     try{
         res.header['x-auth']='';
-        res.status(200).json({message:"Logout Successfull"});
+        res.status(200).json({message:"Logout Successful"});
       }
       catch(error){
         res.status(500).json({message:"Internal Server Error"});
@@ -69,7 +84,7 @@ const updateTeacher = (req,res)=>{
         if(password){
             hashedPassword = bcrypt.hashPassword(password);
         }
-        const teacher = teacherModel.updateTeacher(req.user.email,email,hashedPassword,dob);
+        const teacher = teacherModel.updateTeacher(req.user.email,req.body);
         res.status(200).json({teacher});
     }
     catch(error){

@@ -7,8 +7,8 @@ const {studentRegistration, studentLogin} = require("./studentValidation")
 
 router.post("/register",validateFn(studentRegistration),studentController.register);
 router.post("/login",validateFn(studentLogin),studentController.login);
-// router.post("/logout",authenticateUser,studentController.logout);
-router.post("/register-Course",authenticateUser,authorizeUser('student'),studentController.registerCourse);
-// router.delete("/drop-Course",authenticateUser,authorizeUser('student'),studentController.dropCourse);
+router.post("/logout",authenticateUser,studentController.logout);
+router.post("/register-course/:course_name",authenticateUser,authorizeUser('student'),studentController.registerCourse);
+router.delete("/drop-course",authenticateUser,authorizeUser('student'),studentController.dropCourse);
 
 module.exports = router;

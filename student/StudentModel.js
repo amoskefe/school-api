@@ -1,5 +1,5 @@
 const dBConnection = require("../config/db");
-const courseModel = require("../Course/courseModel");
+const courseModel = require("../Course/CourseModel");
 
 function createStudent(email,password,dob){
     try{

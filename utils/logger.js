@@ -1,7 +1,6 @@
 //winston for logging
 const winston = require('winston');
-const path = require('path');
-
+const path = require('path');const { LOADIPHLPAPI } = require('dns');
 const logsFolder = path.join(__dirname, '..', 'logs');
 
 // Configure Winston logger
@@ -24,5 +23,3 @@ const logger = winston.createLogger({
     new winston.transports.File({ filename: path.join(logsFolder, 'combined.log') }),
   ],
 });
-
-module.exports = logger;

@@ -10,7 +10,7 @@ const logger = require("./utils/logger");
 // import - routes for each entity
 const adminRoutes = require("./Admin/adminRoute");
 const courseRoutes = require("./Course/courseRoute");
-const studentRoutes = require("./Student/studentRoute");
+const studentRoutes = require("./Student/StudentRoute");
 const teacherRoutes = require("./Teacher/teacherRoute");
 
 //server-instance
