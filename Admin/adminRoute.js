@@ -6,7 +6,7 @@ const validateFn = require("../middlewares/validationFn");
 const adminLogin = require("./adminValidation");
 
 router.post("/login", adminController.login);
-router.post("/create-admin", adminController.createAdmin);
+// router.post("/create-admin", adminController.createAdmin);
 router.post("/logout", middleware.authenticateUser, adminController.logOut);
 
 module.exports = router;

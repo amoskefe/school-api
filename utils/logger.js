@@ -23,3 +23,5 @@ const logger = winston.createLogger({
     new winston.transports.File({ filename: path.join(logsFolder, 'combined.log') }),
   ],
 });
+
+module.exports = {logger}

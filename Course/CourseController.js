@@ -1,4 +1,4 @@
-const courseModel = require("./courseModel");
+const courseModel = require("./CourseModel");
 
 function createCourse(req,res){
     try{
@@ -20,4 +20,8 @@ function getAllCourses(req,res){
     catch(err){
         res.status(500).json({message:"Error fetching courses",error:err});
     }
+}
+
+module.exports = {
+    createCourse, getAllCourses
 }

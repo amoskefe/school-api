@@ -2,6 +2,12 @@ const express = require("express");
 const router = express.Router();
 const teacherController = require("./TeacherController")
 const auth = require("../middlewares/auth");
+const studentController = require("../student/StudentController");
+
+const validationFn = require("../middlewares/validationFn")
+const {authorizeUser,authenticateUser} = require("../middlewares/auth")
+const teacherSchema = require("./TeacherValidation")
+const {loginTeacher, register} = require("./TeacherValidation")
 
 router.post("/register", teacherController.registerTeacher);
 router.post("/login", teacherController.loginTeacher);

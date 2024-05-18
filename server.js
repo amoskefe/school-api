@@ -5,13 +5,13 @@ require('dotenv').config();
 const db = require("./config/db");
 
 //logger-file
-const logger = require("./utils/logger");
+// const logger = require("./utils/logger");
 
 // import - routes for each entity
 const adminRoutes = require("./Admin/adminRoute");
 const courseRoutes = require("./Course/courseRoute");
-const studentRoutes = require("./Student/StudentRoute");
-const teacherRoutes = require("./Teacher/teacherRoute");
+const studentRoutes = require("./student/StudentRoute");
+const teacherRoutes = require("./Teacher/TeacherRoute");
 
 //server-instance
 const server = express();
@@ -47,7 +47,7 @@ db.connect((err) => {
         return;
     }
     server.listen(port, () => {
-        logger.info("SERVER RUNNING")
+        // logger("SERVER RUNNING")
         console.log(`Server is running on port ${port}`);
     });
 });
